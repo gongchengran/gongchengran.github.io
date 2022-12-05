@@ -1,5 +1,3 @@
-# Leetcode
-
 ### Date：12.1
 
 #### 121.买卖股票的最佳时期
@@ -93,4 +91,28 @@ public:
     }
 };
 ```
+
+#### 448.找到所有数组中消失的数字
+#### Tips：注意使用set关联式容器，可以使用find进行搜索，而动态数组vector不可以使用！！！
+
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        int n = nums.size();
+        set<int> s;
+        vector<int> res;
+        for(int i = 0; i < n; i++)
+        {
+            s.insert(nums[i]);
+        }
+        for(int i = 1; i <= n; i++)
+        {
+            if(s.find(i) == s.end())
+            {
+                res.push_back(i);
+            }
+        }
+        return res;
+    }
+};
 

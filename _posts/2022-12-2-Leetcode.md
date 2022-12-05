@@ -1,3 +1,4 @@
+## Hot100 数组类别
 ### Date：12.1
 
 #### 121.买卖股票的最佳时期
@@ -91,9 +92,30 @@ public:
     }
 };
 ```
+
 ### Date: 12.5
+#### 283.移动零
+**#### Tips: 使用双指针，将非零元素移动至数组前方，后面缺的补零即可**
+```
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int k = 0;
+        for(int x : nums)
+        {
+            if(x != 0)
+            {
+                nums[k] = x;
+                k++;
+            }
+        }
+        while(k < nums.size()) nums[k++] = 0;
+    }
+};
+```
+
 #### 448.找到所有数组中消失的数字
-#### Tips：注意使用set关联式容器，可以使用find进行搜索，而动态数组vector不可以使用！！！
+**##### Tips：注意使用set关联式容器，可以使用find进行搜索，而动态数组vector不可以使用！！！**
 ```
 class Solution {
 public:

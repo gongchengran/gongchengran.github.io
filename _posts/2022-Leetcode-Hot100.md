@@ -1,4 +1,3 @@
-## Hot100 数组类别
 ### Date：12.1
 
 #### 121.买卖股票的最佳时期
@@ -138,3 +137,57 @@ public:
     }
 };
 ```
+
+## Leetcode - HOT 100
+
+#### 11.盛最多水的容器
+
+##### 法1（双循环更新最大值）
+
+**Tips：在Leetcode上运行超时，但在VS上顺利运行并编译通过**
+
+```
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int res = 0;
+        int n = height.size();
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = n-1; j > i; j--)
+            {
+                int temp = min(height[i],height[j])*(j-i);
+                res = max(res, temp);
+            }
+        }
+        return res;
+    }
+};
+```
+
+
+
+##### 法2（双指针）
+
+**Tips：无论短板长板向内收缩时横轴都会少1，短板向内缩短时短板可能变长，结果可能变大；而长板收缩时结果一定会变小，因此解题步骤为：**
+
+**1 短板收缩，更新结果  **
+
+**2 更新短板**
+
+```
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int i = 0, j = height.size() - 1, res = 0;
+        while(i < j)
+        {
+            res = max(res, min(height[i],height[j])*(j-i));
+            height[i]<height[j]?i++:j--;
+        }
+        return res;
+    }
+};
+```
+
+

@@ -1,0 +1,230 @@
+# ROS1入门21讲 古月居
+
+**1.ROS**
+
+Robot Operating System
+
+起源：2007年11月
+
+目标：提高软件复用率
+
+现状：机器人领域的普遍标准
+
+**2.ROS社区**
+
+answers.ros.org  wiki.ros.org  packages.ros.org 
+
+**3.Linux常用操作**
+
+ctrl+alt+T : 终端
+
+pwd : 查看当前路径
+
+cd : 跳转文件夹
+
+cd .. : 上层文件夹
+
+mkdir : 创建文件夹
+
+ls : 查看路径下文件
+
+touch : 新创建文件  touch test_file
+
+mv（move）: 剪切 mv test_file /home/lhr
+
+cp（copy）: 拷贝 cp test_file（源文件） test_folder/test_file2（新路径 新命名）
+
+rm（remove）: rm test_file（删除文件）  rm -r test_folder/（递归方式删除文件夹）
+
+sudo : 提升权限
+
+**4.ROS安装步骤（Ubuntu 20.04）**
+
+（1）配置软件源
+
+通常选取清华源或者阿里云
+
+（2）添加ROS软件源
+
+```
+sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.ustc.edu.cn/ros/ubuntu/ $DISTRIB_CODENAME main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+
+（3）添加密匙
+
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654
+```
+
+（4）安装ROS
+
+```
+sudo apt update
+
+sudo apt install ros-noetic-desktop-full
+```
+
+（5）初始化rosdep
+
+```
+sudo rosdep init
+
+rosdep update
+```
+
+（6）设置环境变量
+
+```
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+```
+
+（7）安装rosinstall
+
+```
+sudo apt install python3-rosinstall python3-rosinstall-generator python3-wstool
+```
+
+**验证ROS是否安装成功**
+
+（1）启动ROS Master
+
+```
+roscore 
+```
+
+（2）启动小海龟仿真器
+
+```
+rosrun turtlesim turtlesim_node
+```
+
+（3）启动海龟控制节点
+
+```
+rosrun turtlesim turtle_teleop_key
+```
+
+**5.ROS是什么**
+
+ROS = 通信机制+开发工具+应用功能+生态系统
+
+目标：提高机器人研发中的软件复用率
+
+**6.ROS的核心概念**
+
+通信机制：松耦合分布式通信
+
+**<1>节点 & 节点管理器**
+
+节点（Node）— 执行单元
+
+节点管理器（ROS Master）— 控制中心
+
+**<2>话题通信**
+
+（1）话题模型（**发布/订阅**） 单向传输
+
+话题（Topic）— 异步通信机制 
+
+消息（Message）— 话题数据
+
+* 具有一定的类型和数据结构 
+* .msg文件定义
+
+（2）服务（Service）— 同步通信机制
+
+**客户端/服务器**（C/S）模型  双向 请求应答
+
+客户端发送**请求**数据，服务器完成后返回**应答**数据
+
+<3>参数（Parameter）— 全局共享字典
+
+存储整个系统运行时的参数 适合存储静态、非二进制的配置参数，不适合存储动态配置的数据
+
+<4>功能包（Package）
+
+<5>功能包清单（Package manifest）
+
+<6>元功能包（Meta Packages）
+
+**7.ROS命令行工具**
+
+可视化工具查看系统运行的计算图：rqt_graph
+
+查看话题列表：rosnode list
+
+发布话题消息：
+
+```
+rostopic pub -r 10 /turtle/cmd_vel geometry_msgs/Twist "linear:
+
+x:1.0
+
+y:0.0
+
+z:0.0
+
+angular:
+
+x:0.0
+
+y:0.0
+
+z:0.0"
+```
+
+发布服务请求：rosservice call /spawn "x:5.0
+
+y:5.0
+
+theta:0.0
+
+name:'turtle2'"
+
+话题记录：rosbag record -a -O cmd_record
+
+话题复现：rosbag play cmd_record.bag
+
+**8.工作空间(workspace)**
+
+src：代码空间（Source Space）
+
+build：编译空间（Build Space）
+
+devel：开发空间（Development Space）
+
+install：安装空间（Install Space）
+
+创建工作空间：
+
+```
+mkdir -p ~/catkin_ws/src
+
+cd ~/catkin/src
+
+catkin_init_workspace
+
+cd ..
+
+catkin_make
+
+catkin_make install(这样才会生成install安装空间)
+```
+
+创建功能包：
+
+```
+catkin_create_pkg test_pkg roscpp rospy std_msgs
+```
+
+设置环境变量：
+
+```
+source devel/setup.bash
+```
+
+检查环境变量：
+
+```
+echo $ROS_PACKAGE_PATH
+```

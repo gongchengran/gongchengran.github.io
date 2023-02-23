@@ -4,7 +4,7 @@
 https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 ```
 
-![image-20230223174743203](C:\Users\11728\AppData\Roaming\Typora\typora-user-images\image-20230223174743203.png)
+![Euroc数据集](../images/Euroc数据集.png)
 
 **2.修改数据集路径**
 
@@ -38,5 +38,5 @@ cd build
 
 **6.运行结果**
 
-![image-20230223185501722](C:\Users\11728\AppData\Roaming\Typora\typora-user-images\image-20230223185501722.png)
+![运行图](../images/运行图.png)
 

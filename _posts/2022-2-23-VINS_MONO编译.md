@@ -27,7 +27,7 @@ make -j4
 
 常规报错网上可搜到不再赘述，有一个比较特殊的在此记录
 
-![image-20230223185016098](C:\Users\11728\AppData\Roaming\Typora\typora-user-images\image-20230223185016098.png)
+![VINS报错图](../images/VINS报错图.png)
 
 **5.运行**
 

@@ -9,7 +9,7 @@ author: gongchengran
 
 #### Kalman Filter
 参考文档：[文档链接](https://www.kalmanfilter.net/default.aspx)  
-参考食品：[视频连接](https://www.bilibili.com/video/BV1PT411b7e9/?spm_id_from=333.999.0.0)       
+参考视频：[视频连接](https://www.bilibili.com/video/BV1PT411b7e9/?spm_id_from=333.999.0.0)       
 **几种变式：卡尔曼滤波 扩展卡尔曼滤波 无迹卡尔曼滤波**  
 
 **高斯分布（正态分布）均值 协方差矩阵**   

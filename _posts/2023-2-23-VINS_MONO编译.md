@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "VINS_MONO Compile"
+title: "VINS-Mono Test"
 date:   2023-02-23
 tags: [Project]
 comments: true

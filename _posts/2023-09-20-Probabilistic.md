@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "《Probabilistic Data Association for Semantic SLAM》（ICRA 2017 Best Paper）"
+title: "论文阅读《Probabilistic Data Association for Semantic SLAM》（ICRA 2017 Best Paper）"
 date:   2023-09-20
 tags: [Paper, Semantic Segmentation]
 comments: true
